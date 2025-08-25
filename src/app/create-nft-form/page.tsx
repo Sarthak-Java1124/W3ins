@@ -1,16 +1,16 @@
 "use client";
-import axios, { AxiosResponse } from "axios";
-import { image } from "framer-motion/client";
-import React, { useEffect, useState } from "react";
-import { set, useForm } from "react-hook-form";
-import { Abi, Address } from "viem";
-import { writeContract } from "viem/actions";
-import { useAccount, useConnect, useReconnect, useWriteContract } from "wagmi";
+import axios from "axios";
+
+import React, {  useState } from "react";
+import {  useForm } from "react-hook-form";
+import {  Address } from "viem";
+
+import {  useWriteContract } from "wagmi";
 import { abi } from "../../abi.json";
-import { config } from "process";
-import { wagmiConfig } from "@/lib/wagmiConfig";
-import Providers from "../providers";
-import { MorphingText } from "@/components/ui/morphing-text";
+
+
+
+
 import { useWallet, WalletProvider } from "@/context/WagmiContext";
 import { ButtonColorful } from "@/components/ui/button-colorful";
 import { TextScramble } from "@/components/ui/text-scramble";
@@ -18,8 +18,8 @@ import { LoaderFour } from "@/components/ui/loader";
 import { useRouter } from "next/navigation";
 
 export default function CreateNFTForm() {
-  const texts = ["Create NFT", "Celebrate Wins", "Showcase Wins"];
-  const [response, setResponse] = useState([{}]);
+
+  
 
   type formData = {
     headline: string;
@@ -44,7 +44,7 @@ export default function CreateNFTForm() {
     router.back();
   };
 
-  const { isPending, isSuccess } = useConnect();
+
   const [isLoading, setIsLoading] = useState(false);
   const { address, isConnected, handleConnect, handleDisconnect } = useWallet();
 
@@ -60,7 +60,7 @@ export default function CreateNFTForm() {
       formData.append("image", data.image[0]);
 
       const response = await axios.post(
-        "http://localhost:8080/users/form-submit",
+        "https://go-w3insbackend.onrender.com/users/form-submit",
         formData,
         {
           headers: {
@@ -70,7 +70,7 @@ export default function CreateNFTForm() {
       );
 
       if (response.data.success == true && isConnected == true) {
-        setResponse(response.data);
+        
         setIsLoading(true);
        
         ipfsURL = response.data.ipfsURL;
@@ -100,7 +100,6 @@ export default function CreateNFTForm() {
       }}
     >
       <div className="flex flex-col w-full max-w-4xl items-center justify-center gap-6 md:gap-12">
-        {/* Animated Heading */}
         <TextScramble
           className="font-mono mt-5 text-2xl sm:text-4xl md:text-6xl text-yellow-400 uppercase text-center"
           trigger={isTrigger}
@@ -110,17 +109,12 @@ export default function CreateNFTForm() {
         >
           Create Your NFT
         </TextScramble>
-
-        {/* Back Button */}
         <ButtonColorful onClick={goBack} label="Back to Home" />
-
-        {/* Form Container */}
         <div className="w-full bg-black/40 mb-5 rounded-2xl border p-6 sm:p-8 md:p-10 font-poppins flex flex-col items-center shadow-xl border-white/10">
           <form
             className="w-full flex flex-col gap-4"
             onSubmit={form.handleSubmit(onSubmit)}
           >
-            {/* Headline */}
             <label className="font-medium" style={{ color: "#C0B8AD" }}>
               Headline
             </label>
@@ -135,8 +129,6 @@ export default function CreateNFTForm() {
                 color: "#F5F5F5",
               }}
             />
-
-            {/* Description */}
             <label className="font-medium" style={{ color: "#C0B8AD" }}>
               Description
             </label>
@@ -151,8 +143,6 @@ export default function CreateNFTForm() {
                 color: "#F5F5F5",
               }}
             />
-
-            {/* Upload Image */}
             <label className="font-medium" style={{ color: "#C0B8AD" }}>
               Upload Image
             </label>
@@ -166,8 +156,6 @@ export default function CreateNFTForm() {
                 color: "#F5F5F5",
               }}
             />
-
-            {/* Date + Hashtags Row */}
             <div className="flex flex-col sm:flex-row gap-4 w-full">
               <div className="flex-1 flex flex-col">
                 <label
@@ -208,11 +196,10 @@ export default function CreateNFTForm() {
               </div>
             </div>
 
-            {/* Submit / Connect Wallet */}
             {isConnected ? (
               <button
                 type="submit"
-                className="mt-4 w-full px-6 py-3 rounded-lg text-lg font-normal shadow transition-colors"
+                className="mt-4 w-full px-6 py-3 cursor-pointer rounded-lg text-lg font-normal shadow transition-colors"
                 style={{ background: "#C86B27", color: "#FFFFFF" }}
               >
                 {isLoading ? <LoaderFour /> : "Submit"}

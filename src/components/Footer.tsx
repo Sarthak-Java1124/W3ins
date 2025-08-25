@@ -8,7 +8,7 @@ return (
       Made By Sarthak Harsh
     </h1>
     <div className="flex gap-2">
-      <h1 className="font-mono text-lg text-white ">Let's Connect on</h1>
+  <h1 className="font-mono text-lg text-white ">Let&apos;s Connect on</h1>
       <a
         href="https://www.linkedin.com/in/sarthak-harsh-3980b625b"
         target="_blank"

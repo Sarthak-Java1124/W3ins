@@ -67,7 +67,7 @@ export default function LandingPage() {
     const getData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/users/get-form-data/${address}`
+          `https://go-w3insbackend.onrender.com/users/get-form-data/${address}`
         );
         if (response.data.success == true) {
           setCardData(response.data.cardData);
