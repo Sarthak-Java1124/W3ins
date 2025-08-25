@@ -26,11 +26,8 @@ export default function AboutUs() {
             </ul>
           </div>
           <div className="flex-1 flex flex-col items-center">
-            <div className="w-32 h-32 rounded-2xl bg-gradient-to-tr from-yellow-400 via-[#FF8C42] to-pink-400 flex items-center justify-center mb-4 shadow-lg animate-pulse">
-              <svg width="64" height="64" fill="none" viewBox="0 0 64 64">
-                <circle cx="32" cy="32" r="30" stroke="#fff" strokeWidth="4" fill="#1A1A1A" />
-                <text x="50%" y="54%" textAnchor="middle" fill="#FF8C42" fontSize="2.5rem" fontWeight="bold" fontFamily="Poppins, sans-serif">W</text>
-              </svg>
+            <div className="w-32 h-32 rounded-2xl bg-transparent flex items-center justify-center mb-4 shadow-lg animate-pulse">
+             <img src={"/w-ins.png"}></img>
             </div>
             <span className="text-[#C0B8AD] text-base md:text-lg text-center">Your win, your NFT. Forever on-chain.</span>
           </div>
