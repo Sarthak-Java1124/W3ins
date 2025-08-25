@@ -26,7 +26,7 @@ export default function CreateNFTForm() {
     description: string;
     date: string;
     hashtag: string;
-    image: FileList;
+    image: FileList | null;
   };
   const { writeContractAsync } = useWriteContract();
   let ipfsURL;
@@ -36,7 +36,7 @@ export default function CreateNFTForm() {
       description: "",
       date: "",
       hashtag: "",
-      image: undefined as any,
+      image: null,
     },
   });
   const router = useRouter();
@@ -57,8 +57,9 @@ export default function CreateNFTForm() {
       formData.append("date", data.date);
       formData.append("hashtag", data.hashtag);
       formData.append("address", address as Address);
-      formData.append("image", data.image[0]);
-
+     if (data.image && data.image.length > 0) {
+       formData.append("image", data.image[0]);
+     }
       const response = await axios.post(
         "https://go-w3insbackend.onrender.com/users/form-submit",
         formData,
