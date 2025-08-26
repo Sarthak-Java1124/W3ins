@@ -14,18 +14,17 @@ export default function Navbar() {
       className="w-full flex items-center justify-between px-4 sm:px-8 py-4 backdrop-blur-md shadow-md"
       style={{ backgroundImage: "url('/bg-img.png')" }}
     >
-      {/* Logo on the left */}
       <div className="flex items-center">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-r from-[#9945FF] via-[#43E7AD] to-[#2AF598] bg-clip-text text-transparent select-none font-poppins">
           W3ins
         </h1>
-        {/* Show loader only on desktop */}
-        <div className="hidden lg:flex">
+     
+        <div className=" lg:flex">
           <LoaderThree />
         </div>
       </div>
 
-      {/* Nav Links (hidden on mobile) */}
+
       <div className="hidden lg:flex gap-6 font-poppins">
         <a
           href="#about"
@@ -47,7 +46,7 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* Connect Button on the right */}
+     
       <div className="flex items-center">
         {!address ? (
           <>
