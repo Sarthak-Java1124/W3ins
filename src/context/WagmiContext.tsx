@@ -1,6 +1,7 @@
 "use client"
 
 import {createContext, ReactNode, useContext} from "react"
+import { toast } from "sonner";
 import { Address } from "viem";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 
@@ -20,12 +21,14 @@ export function WalletProvider ({children} : {children : ReactNode}){
    const handleConnect = async ()=>{
      try {
         const availableConnectors = connectors.find((c)=>c.id=="injected")
-        if(availableConnectors != null){
+        if(availableConnectors != null ){
             await connectAsync({connector : availableConnectors})
         }else {
-        alert("Please connect a wallet")
+            alert("You don't have any wallet present")
         }
      }catch(error){
+      
+       toast.warning("No Wallet found in extension please add one")
       console.log("The error in connecting the wallet is : " , error)
      }
    }
